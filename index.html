@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>joan_off — Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">joan_off<span class="dot">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#hero">Profil</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="profile-wrapper">
+        <div class="profile-ring"></div>
+        <img
+          src="https://images-ext-1.discordapp.net/external/fSupRz2AB4Yf2jy-iLb5AEUEMHZE9eRIcu_-_s--6V8/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1398425974227337330/51763061af90e7ec94cc5fdd73351e74.png?format=webp&quality=lossless&width=256&height=256"
+          alt="joan_off"
+          class="profile-img"
+        />
+        <div class="profile-status"><span class="status-dot"></span>Disponible</div>
+      </div>
+      <div class="hero-text">
+        <p class="hero-label">// DÉVELOPPEUR WEB</p>
+        <h1 class="hero-name">joan_off<span class="blink">_</span></h1>
+        <p class="hero-desc">Passionné par le code, je construis des interfaces web rapides, propres et bien pensées. Du front au back, j'aime créer des expériences qui ont du sens.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">Voir mes projets</a>
+          <a href="#contact" class="btn-outline">Me contacter</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section" id="skills">
+    <div class="section-header reveal">
+      <p class="section-tag">// LANGAGES</p>
+      <h2>Stack technique</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/>
+        <span>HTML</span>
+      </div>
+      <div class="skill-card reveal">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/>
+        <span>CSS</span>
+      </div>
+      <div class="skill-card reveal">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/>
+        <span>Python</span>
+      </div>
+      <div class="skill-card reveal">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/>
+        <span>JavaScript</span>
+      </div>
+      <div class="skill-card reveal">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg" alt="Electron"/>
+        <span>Electron</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="projects">
+    <div class="section-header reveal">
+      <p class="section-tag">// PROJETS</p>
+      <h2>Ce que j'ai construit</h2>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="projects-loading" id="projectsLoading">
+        <div class="spinner"></div>
+        <p>Chargement des projets...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-header reveal">
+      <p class="section-tag">// CONTACT</p>
+      <h2>Me contacter</h2>
+    </div>
+    <div class="contact-wrapper">
+      <div class="contact-left reveal">
+        <p>Un projet en tête ? Une question ?<br/>Je réponds rapidement.</p>
+        <div class="contact-socials">
+          <a href="https://github.com/Devcenter24" target="_blank" class="social-link">
+            <i class="fa-brands fa-github"></i>
+            <span>github.com/Devcenter24</span>
+          </a>
+          <div class="social-link">
+            <i class="fa-brands fa-discord"></i>
+            <span>_jojo_fr_</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrapper reveal">
+        <form id="contactForm">
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" id="cName" placeholder="Votre nom" required/>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="cEmail" placeholder="votre@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="cMessage" rows="5" placeholder="Votre message..." required></textarea>
+          </div>
+
+          <!-- CAPTCHA -->
+          <div class="captcha-box" id="captchaBox">
+            <div class="captcha-check" id="captchaCheck" onclick="toggleCaptcha()">
+              <div class="check-box" id="checkBox">
+                <i class="fa-solid fa-check" id="checkIcon" style="display:none;"></i>
+              </div>
+              <span>Je ne suis pas un robot</span>
+            </div>
+            <div class="captcha-logo">
+              <div class="captcha-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <small>Vérification</small>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary full" id="submitBtn" disabled>
+            Envoyer <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <p class="form-feedback" id="formFeedback"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>joan_off<span class="dot">.</span> — <span id="fyear"></span></p>
+  </footer>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://gloejzyzgomrmmyonzll.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsb2Vqenl6Z29tcm1teW9uemxsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3Njc5NTYsImV4cCI6MjA5MzM0Mzk1Nn0.x39I6vpL_1jU3yt0QakEZZROhHVnCFzB3c0-UM3MpT0';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    document.getElementById('fyear').textContent = new Date().getFullYear();
+
+    // CURSOR
+    const cur = document.getElementById('cursor');
+    const fol = document.getElementById('cursorFollower');
+    document.addEventListener('mousemove', e => {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        fol.style.left = e.clientX + 'px';
+        fol.style.top = e.clientY + 'px';
+      }, 80);
+    });
+    document.querySelectorAll('a, button, .skill-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cur.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+    });
+
+    // NAVBAR
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // SCROLL REVEAL
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .skill-card, .section-header').forEach(el => revealObs.observe(el));
+
+    // LOAD PROJECTS
+    async function loadProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const { data, error } = await sb.from('projects').select('*').order('created_at', { ascending: false });
+      grid.innerHTML = '';
+      if (error || !data || data.length === 0) {
+        grid.innerHTML = '<p class="empty-projects">Aucun projet pour l\'instant. Revenez bientôt !</p>';
+        return;
+      }
+      data.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'project-card reveal';
+        card.innerHTML = `
+          <div class="project-top">
+            <div class="project-logo-wrap">
+              ${p.logo_url ? `<img src="${p.logo_url}" alt="${p.title}" class="project-logo"/>` : `<div class="project-logo-placeholder"><i class="fa-solid fa-code"></i></div>`}
+            </div>
+            <div class="project-links">
+              ${p.github_url ? `<a href="${p.github_url}" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>` : ''}
+              ${p.demo_url ? `<a href="${p.demo_url}" target="_blank" title="Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+            </div>
+          </div>
+          <span class="project-tag">${p.tag || 'Web'}</span>
+          <h3>${p.title}</h3>
+          <p>${p.description || ''}</p>
+          <div class="project-techs">${(p.techs||'').split(',').filter(t=>t.trim()).map(t=>`<span>${t.trim()}</span>`).join('')}</div>
+        `;
+        grid.appendChild(card);
+        revealObs.observe(card);
+      });
+    }
+    loadProjects();
+
+    // CAPTCHA
+    let captchaPassed = false;
+    function toggleCaptcha() {
+      const box = document.getElementById('checkBox');
+      const icon = document.getElementById('checkIcon');
+      const btn = document.getElementById('submitBtn');
+      if (captchaPassed) return;
+      // Simulate slight delay for realism
+      box.classList.add('checking');
+      setTimeout(() => {
+        box.classList.remove('checking');
+        box.classList.add('checked');
+        icon.style.display = 'block';
+        captchaPassed = true;
+        btn.disabled = false;
+        document.getElementById('captchaCheck').style.cursor = 'default';
+      }, 800);
+    }
+
+    // CONTACT FORM
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!captchaPassed) return;
+      const btn = document.getElementById('submitBtn');
+      const fb = document.getElementById('formFeedback');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi...';
+      const { error } = await sb.from('messages').insert({
+        name: document.getElementById('cName').value.trim(),
+        email: document.getElementById('cEmail').value.trim(),
+        message: document.getElementById('cMessage').value.trim(),
+      });
+      if (error) {
+        fb.textContent = '✗ Erreur lors de l\'envoi. Réessayez.';
+        fb.className = 'form-feedback error';
+        btn.disabled = false;
+        btn.innerHTML = 'Envoyer <i class="fa-solid fa-paper-plane"></i>';
+      } else {
+        fb.textContent = '✓ Message envoyé ! Je vous répondrai rapidement.';
+        fb.className = 'form-feedback success';
+        this.reset();
+        captchaPassed = false;
+        document.getElementById('checkBox').className = 'check-box';
+        document.getElementById('checkIcon').style.display = 'none';
+        btn.innerHTML = 'Envoyer <i class="fa-solid fa-paper-plane"></i>';
+      }
+    });
+  </script>
+</body>
+</html>
