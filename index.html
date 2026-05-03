@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>joan_off — Portfolio</title>
+  <!-- Favicon = photo de profil (mis à jour dynamiquement) -->
+  <link rel="icon" type="image/png" id="faviconLink" href="https://images-ext-1.discordapp.net/external/fSupRz2AB4Yf2jy-iLb5AEUEMHZE9eRIcu_-_s--6V8/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1398425974227337330/51763061af90e7ec94cc5fdd73351e74.png?format=webp&quality=lossless&width=256&height=256"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">joan_off<span class="dot">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#hero">Profil</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO — pas de grille -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="profile-wrapper">
+        <div class="profile-ring"></div>
+        <img id="profileImg"
+          src="https://images-ext-1.discordapp.net/external/fSupRz2AB4Yf2jy-iLb5AEUEMHZE9eRIcu_-_s--6V8/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1398425974227337330/51763061af90e7ec94cc5fdd73351e74.png?format=webp&quality=lossless&width=256&height=256"
+          alt="joan_off" class="profile-img"/>
+        <div class="profile-status"><span class="status-dot"></span>Disponible</div>
+      </div>
+      <div class="hero-text">
+        <p class="hero-label">// DÉVELOPPEUR WEB</p>
+        <h1 class="hero-name">joan_off<span class="blink">_</span></h1>
+        <p class="hero-desc" id="heroDesc">Passionné par le code, je construis des interfaces web rapides, propres et bien pensées. Du front au back, j'aime créer des expériences qui ont du sens.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">Voir mes projets</a>
+          <a href="#contact" class="btn-outline">Me contacter</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+  </section>
+
+  <!-- SKILLS — chargés depuis Supabase -->
+  <section class="skills-section" id="skills">
+    <div class="section-header reveal">
+      <p class="section-tag">// LANGAGES</p>
+      <h2>Stack technique</h2>
+    </div>
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skills-loading"><div class="spinner"></div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="projects">
+    <div class="section-header reveal">
+      <p class="section-tag">// PROJETS</p>
+      <h2>Ce que j'ai construit</h2>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <div class="projects-loading">
+        <div class="spinner"></div>
+        <p>Chargement...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-header reveal">
+      <p class="section-tag">// CONTACT</p>
+      <h2>Me contacter</h2>
+    </div>
+    <div class="contact-wrapper">
+      <div class="contact-left reveal">
+        <p>Un projet en tête ? Une question ?<br/>Je réponds rapidement.</p>
+        <div class="contact-socials">
+          <a href="https://github.com/Devcenter24" target="_blank" class="social-link">
+            <i class="fa-brands fa-github"></i>
+            <span>github.com/Devcenter24</span>
+          </a>
+          <div class="social-link">
+            <i class="fa-brands fa-discord"></i>
+            <span>_jojo_fr_</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrapper reveal">
+        <form id="contactForm">
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" id="cName" placeholder="Votre nom" required/>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="cEmail" placeholder="votre@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="cMessage" rows="5" placeholder="Votre message..." required></textarea>
+          </div>
+          <div class="captcha-box">
+            <div class="captcha-check" id="captchaCheck" onclick="toggleCaptcha()">
+              <div class="check-box" id="checkBox">
+                <i class="fa-solid fa-check" id="checkIcon" style="display:none;"></i>
+              </div>
+              <span>Je ne suis pas un robot</span>
+            </div>
+            <div class="captcha-logo">
+              <div class="captcha-dots"><span></span><span></span><span></span></div>
+              <small>Vérification</small>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary full" id="submitBtn" disabled>
+            Envoyer <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <p class="form-feedback" id="formFeedback"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>joan_off<span class="dot">.</span> — <span id="fyear"></span></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://gloejzyzgomrmmyonzll.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsb2Vqenl6Z29tcm1teW9uemxsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3Njc5NTYsImV4cCI6MjA5MzM0Mzk1Nn0.x39I6vpL_1jU3yt0QakEZZROhHVnCFzB3c0-UM3MpT0';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    document.getElementById('fyear').textContent = new Date().getFullYear();
+
+    // CURSOR
+    const cur = document.getElementById('cursor');
+    const fol = document.getElementById('cursorFollower');
+    document.addEventListener('mousemove', e => {
+      cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+      setTimeout(() => { fol.style.left = e.clientX + 'px'; fol.style.top = e.clientY + 'px'; }, 80);
+    });
+    document.querySelectorAll('a, button, .skill-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cur.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+    });
+
+    // NAVBAR
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // SCROLL REVEAL
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .skill-card, .section-header').forEach(el => revealObs.observe(el));
+
+    // LOAD PROFILE (photo + description depuis Supabase)
+    async function loadProfile() {
+      const { data } = await sb.from('profile').select('*').eq('id', 1).single();
+      if (!data) return;
+      if (data.photo_url) {
+        document.getElementById('profileImg').src = data.photo_url;
+        document.getElementById('faviconLink').href = data.photo_url;
+      }
+      if (data.description) {
+        document.getElementById('heroDesc').textContent = data.description;
+      }
+    }
+
+    // LOAD SKILLS depuis Supabase
+    async function loadSkills() {
+      const grid = document.getElementById('skillsGrid');
+      const { data } = await sb.from('skills').select('*').order('created_at', { ascending: true });
+      grid.innerHTML = '';
+      if (!data || data.length === 0) {
+        grid.innerHTML = '<p style="color:var(--grey);font-family:var(--mono);font-size:.8rem;">Aucun langage configuré.</p>';
+        return;
+      }
+      data.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'skill-card reveal';
+        card.innerHTML = s.logo_url
+          ? `<img src="${s.logo_url}" alt="${s.name}"/><span>${s.name}</span>`
+          : `<div class="skill-icon-placeholder"><i class="fa-solid fa-code"></i></div><span>${s.name}</span>`;
+        grid.appendChild(card);
+        revealObs.observe(card);
+      });
+    }
+
+    // MAP tech name → devicon logo url
+    const TECH_LOGOS = {
+      'html':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+      'html5':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+      'css':        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+      'css3':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+      'javascript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+      'js':         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+      'typescript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+      'ts':         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+      'python':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+      'py':         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+      'react':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      'vue':        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+      'vuejs':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg',
+      'angular':    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
+      'node':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      'nodejs':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      'electron':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg',
+      'php':        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+      'java':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+      'c':          'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
+      'c++':        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+      'cpp':        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+      'c#':         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+      'csharp':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+      'rust':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg',
+      'go':         'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
+      'ruby':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg',
+      'swift':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
+      'kotlin':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
+      'mysql':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+      'postgresql': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+      'postgres':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+      'mongodb':    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+      'git':        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+      'docker':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+      'linux':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
+      'bash':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
+      'sass':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',
+      'tailwind':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
+      'next':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+      'nextjs':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+      'nuxt':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg',
+      'svelte':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg',
+      'flutter':    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg',
+      'dart':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg',
+      'firebase':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+      'supabase':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
+      'figma':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
+      'express':    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+      'redux':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg',
+      'graphql':    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg',
+      'r':          'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg',
+      'lua':        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg',
+      'elixir':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elixir/elixir-original.svg',
+      'haskell':    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/haskell/haskell-original.svg',
+      'scala':      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg',
+      'perl':       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg',
+      'assembly':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/embeddedc/embeddedc-original.svg',
+      'three.js':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg',
+      'threejs':    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg',
+    };
+    function getTechLogo(name) {
+      return TECH_LOGOS[name.toLowerCase().trim()] || null;
+    }
+
+    // LOAD PROJECTS
+    async function loadProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const { data, error } = await sb.from('projects').select('*').order('created_at', { ascending: false });
+      grid.innerHTML = '';
+      if (error || !data || data.length === 0) {
+        grid.innerHTML = '<p class="empty-projects">Aucun projet pour l\'instant. Revenez bientôt !</p>';
+        return;
+      }
+      data.forEach(p => {
+        const techs = (p.techs || '').split(',').filter(t => t.trim());
+        const techsHtml = techs.map(t => {
+          const logo = getTechLogo(t.trim());
+          return logo
+            ? `<span class="tech-pill"><img src="${logo}" alt="${t.trim()}"/>${t.trim()}</span>`
+            : `<span class="tech-pill">${t.trim()}</span>`;
+        }).join('');
+
+        const card = document.createElement('div');
+        card.className = 'project-card reveal';
+        card.innerHTML = `
+          <div class="project-top">
+            <div class="project-logo-wrap">
+              ${p.logo_url
+                ? `<img src="${p.logo_url}" alt="${p.title}" class="project-logo"/>`
+                : `<div class="project-logo-placeholder"><i class="fa-solid fa-code"></i></div>`}
+            </div>
+            <div class="project-links">
+              ${p.github_url ? `<a href="${p.github_url}" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>` : ''}
+              ${p.demo_url ? `<a href="${p.demo_url}" target="_blank" title="Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+            </div>
+          </div>
+          <span class="project-tag">${p.tag || 'Web'}</span>
+          <h3>${p.title}</h3>
+          <p>${p.description || ''}</p>
+          <div class="project-techs">${techsHtml}</div>
+        `;
+        grid.appendChild(card);
+        revealObs.observe(card);
+      });
+    }
+
+    // CAPTCHA
+    let captchaPassed = false;
+    function toggleCaptcha() {
+      if (captchaPassed) return;
+      const box = document.getElementById('checkBox');
+      box.classList.add('checking');
+      setTimeout(() => {
+        box.classList.remove('checking');
+        box.classList.add('checked');
+        document.getElementById('checkIcon').style.display = 'block';
+        captchaPassed = true;
+        document.getElementById('submitBtn').disabled = false;
+        document.getElementById('captchaCheck').style.cursor = 'default';
+      }, 800);
+    }
+
+    // CONTACT FORM
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!captchaPassed) return;
+      const btn = document.getElementById('submitBtn');
+      const fb = document.getElementById('formFeedback');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi...';
+      const { error } = await sb.from('messages').insert({
+        name: document.getElementById('cName').value.trim(),
+        email: document.getElementById('cEmail').value.trim(),
+        message: document.getElementById('cMessage').value.trim(),
+      });
+      if (error) {
+        fb.textContent = '✗ Erreur lors de l\'envoi. Réessayez.';
+        fb.className = 'form-feedback error';
+        btn.disabled = false;
+      } else {
+        fb.textContent = '✓ Message envoyé !';
+        fb.className = 'form-feedback success';
+        this.reset();
+        captchaPassed = false;
+        document.getElementById('checkBox').className = 'check-box';
+        document.getElementById('checkIcon').style.display = 'none';
+        btn.disabled = true;
+      }
+      btn.innerHTML = 'Envoyer <i class="fa-solid fa-paper-plane"></i>';
+    });
+
+    // INIT
+    loadProfile();
+    loadSkills();
+    loadProjects();
+  </script>
+</body>
+</html>
