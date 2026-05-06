@@ -41,9 +41,9 @@
     <p class="login-label">Panel Administrateur</p>
     <!-- Affichage selon état: 1er accès ou connexion normale -->
     <div id="loginSetup" style="display:none">
-      <p class="login-setup-msg">Première connexion — choisissez votre code d'accès</p>
+      <p class="login-setup-msg">Premiere connexion - choisissez votre code d'acces</p>
       <div class="form-group">
-        <label>Nouveau code d'accès</label>
+        <label>Nouveau code</label>
         <div class="input-icon">
           <input type="password" id="setupPass" placeholder="Choisir un code..."/>
           <i class="fa-solid fa-key"></i>
@@ -157,24 +157,24 @@
 
     <!-- ===== SETTINGS ===== -->
     <div class="panel" id="panel-settings">
-      <div class="panel-head"><div><h1>Paramètres</h1><p>Gestion du code d'accès</p></div></div>
+      <div class="panel-head"><div><h1>Paramètres</h1><p>Gestion du code d acces</p></div></div>
       <div class="settings-card">
         <div class="form-group">
-          <label>Code d'accès actuel</label>
+          <label>Code actuel</label>
           <div class="input-icon">
             <input type="password" id="currentPass" placeholder="Code actuel"/>
             <i class="fa-solid fa-lock"></i>
           </div>
         </div>
         <div class="form-group">
-          <label>Nouveau code d'accès</label>
+          <label>Nouveau code</label>
           <div class="input-icon">
             <input type="password" id="newPass" placeholder="Nouveau code..."/>
             <i class="fa-solid fa-key"></i>
           </div>
         </div>
         <div class="form-group">
-          <label>Confirmer le nouveau code</label>
+          <label>Confirmer</label>
           <div class="input-icon">
             <input type="password" id="confirmPass" placeholder="Confirmer..."/>
             <i class="fa-solid fa-key"></i>
@@ -371,7 +371,7 @@ async function doSetup() {
   const p = document.getElementById('setupPass').value.trim();
   const p2 = document.getElementById('setupPassConfirm').value.trim();
   const err = document.getElementById('loginErr');
-  if (!p) { err.textContent = '⚠ Le code ne peut pas être vide'; return; }
+  if (!p) { err.textContent = '⚠ Le code ne peut pas etre vide'; return; }
   if (p !== p2) { err.textContent = '⚠ Les codes ne correspondent pas'; return; }
   const { error } = await sb.from('admin_config').upsert({ key:'password', value: p });
   if (error) { err.textContent = '⚠ Erreur: ' + error.message; return; }
@@ -769,7 +769,7 @@ async function saveSettings() {
   const confirm = document.getElementById('confirmPass').value.trim();
   const fb = document.getElementById('settFeedback');
   if (current !== sessionPass) { fb.textContent = '⚠ Code actuel incorrect'; fb.className = 'feedback err'; return; }
-  if (!newP) { fb.textContent = '⚠ Le nouveau code ne peut pas être vide'; fb.className = 'feedback err'; return; }
+  if (!newP) { fb.textContent = '⚠ Le nouveau code ne peut pas etre vide'; fb.className = 'feedback err'; return; }
   if (newP !== confirm) { fb.textContent = '⚠ Les codes ne correspondent pas'; fb.className = 'feedback err'; return; }
   const { error } = await sb.from('admin_config').upsert({ key:'password', value: newP });
   if (error) { fb.textContent = '⚠ Erreur: ' + error.message; fb.className = 'feedback err'; return; }
@@ -777,7 +777,7 @@ async function saveSettings() {
   document.getElementById('currentPass').value = '';
   document.getElementById('newPass').value = '';
   document.getElementById('confirmPass').value = '';
-  fb.textContent = '✓ Code d'accès mis à jour !'; fb.className = 'feedback ok';
+  fb.textContent = '✓ Code mis a jour !'; fb.className = 'feedback ok';
   setTimeout(() => fb.textContent='', 3000);
 }
 
